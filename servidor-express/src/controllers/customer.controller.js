@@ -1,9 +1,9 @@
-import CustomerModule from "../models/customer.module.js";
+import CustomerModel from "../models/customer.module.js";
 
 // GET /customers
 const getCustomers = async (req, res) => {
   try {
-    const customers = await CustomerModule.findAll();
+    const customers = await CustomerModel.findAll();
     res.json(customers);
   } catch (error) {
     console.error(error);
@@ -15,7 +15,7 @@ const getCustomers = async (req, res) => {
 const getCustomerById = async (req, res) => {
   try {
     const { id } = req.params;
-    const customer = await CustomerModule.findByPk(id);
+    const customer = await CustomerModel.findByPk(id);
     if (customer) {
       res.json(customer);
     } else {
@@ -30,7 +30,7 @@ const getCustomerById = async (req, res) => {
 // POST /customers
 const createCustomer = async (req, res) => {
   try {
-    await CustomerModule.create(req.body);
+    await CustomerModel.create(req.body);
     res.json({
       message: "Customer created successfully",
     });
@@ -43,7 +43,7 @@ const createCustomer = async (req, res) => {
 // PUT /customers/:id
 const updateCustomer = async (req, res) => {
   try {
-    await CustomerModule.update(req.body, { where: { id: req.params.id } });
+    await CustomerModel.update(req.body, { where: { ID_Client: req.params.id } });
     res.json({
       message: "Customer updated successfully",
     });
@@ -56,7 +56,7 @@ const updateCustomer = async (req, res) => {
 // DELETE /customers/:id
 const deleteCustomer = async (req, res) => {
   try {
-    await CustomerModule.destroy({ where: { id: req.params.id } });
+    await CustomerModel.destroy({ where: { ID_Client: req.params.id } });
     res.json({
       message: "Record deleted successfully",
     });

@@ -1,31 +1,43 @@
 import UserModule from "../models/user.module.js";
+import CustomerModel from "../models/customer.module.js"
+import DriverModel from "../models/driver.module.js";
 import bcrypt from 'bcrypt';
 
 
 // GET /users
 const getUsers = async (req, res) => {
-  const { username, password, email, rol } = req.body;
-
   try {
-
-    const newUser = await UserModule.create({
-      username,
-      password,
-      email,
-      rol,
+    const users = await UserModule.findAll({
+      attributes: { exclude: ['password'] }
     });
-
-    return res.status(201).json({ user: newUser });
+    res.json(users);
   } catch (error) {
-    if (error.name === "SequelizeUniqueConstraintError") {
-      // Handle unique constraint violation error (duplicate mail or user)
-      return res.status(400).json({ message: "Username or email already exists" });
-    } else {
-      console.error(error);
-      return res.status(500).json({ message: "Server error" });
-    }
+    console.error(error);
+    res.status(500).json({ message: "Internal server error" });
   }
 };
+
+const getIdClientbyIduser = async(req, res) => {
+  try {
+    const { id } = req.params;
+    const client = await CustomerModel.findOne({where: {UserID:id}})
+    res.json(client);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+} 
+
+const getIdDiverbyIduser = async(req, res) => {
+  try {
+    const { id } = req.params;
+    const client = await DriverModel.findOne({where: {UserID:id}})
+    res.json(client);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+} 
 
 // GET /users/:id
 const getUserById = async (req, res) => {
@@ -90,4 +102,4 @@ const deleteUser = async (req, res) => {
   }
 };
 
-export { getUsers, getUserById, createUser, updateUser, deleteUser };
+export { getUsers, getUserById, createUser, updateUser, deleteUser, getIdClientbyIduser,getIdDiverbyIduser };

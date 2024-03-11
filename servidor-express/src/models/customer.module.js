@@ -1,47 +1,50 @@
 import { DataTypes } from "sequelize";
 import db from "../db.js";
+import UserModule from "./user.module.js";
 
-
-const customerModule = db.define(
+const CustomerModel = db.define(
   "customers",
   {
-    id: {
+    ID_Client: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
     },
-    name: {
+    Name: {
       type: DataTypes.STRING(100),
       allowNull: false,
     },
-    lastname: {
+    Lastname: {
       type: DataTypes.STRING(100),
       allowNull: false,
     },
-    phone: {
-      type: DataTypes.STRING(20),
+    BirthDate: {
+      type: DataTypes.DATEONLY,
       allowNull: false,
     },
-    address: {
-      type: DataTypes.STRING(200),
+    ID_Number: {
+      type: DataTypes.STRING(100),
       allowNull: false,
     },
-    age: {
+    Balance: {
+      type: DataTypes.DECIMAL(10, 2),
+      allowNull: false,
+      defaultValue: 0,
+    },
+    UserID: {
       type: DataTypes.INTEGER,
       allowNull: false,
-    },
-    email: {
-      type: DataTypes.STRING(100),
-      allowNull: false,
-      unique: true,
+      references: {
+        model: UserModule,
+        key: "id",
+      },
     },
   },
   {
-    tableName: "custumers",
+    tableName: "customers",
     timestamps: false,
   }
 );
 
-
-export default customerModule;
+export default CustomerModel;

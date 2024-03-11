@@ -21,8 +21,13 @@ export const login = async (req, res) => {
       //Password is valid, generate a JWT token
       const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
-      //Return the token and user information
-      return res.status(200).json({ token });
+      //Return the token, username, and role
+      return res.status(200).json({ 
+        token, 
+        username: user.username, 
+        role: user.rol,
+        id: user.id
+      });
     } else {
       //If the password is invalid, return an error message
       return res.status(401).json({ message: "Invalid credentials" });
@@ -32,5 +37,6 @@ export const login = async (req, res) => {
     return res.status(500).json({ message: "Server error" });
   }
 };
+
 
 

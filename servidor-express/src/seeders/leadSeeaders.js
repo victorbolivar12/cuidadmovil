@@ -1,13 +1,17 @@
 import UserModule from "../models/user.module.js";
+import CustomerModel from "../models/customer.module.js";
+import DriverModel from "../models/driver.module.js"
+import TransferModel from "../models/transfer.module.js"
+import VehicleModel from "../models/vehicle.module.js";
+import RechargeModel from "../models/recharges.module.js";
+
 import usersData from "./users.data.js";
-import customerModule from "../models/customer.module.js";
-import customersData from "./custumerData.js"
-import productModule from "../models/product.module.js";
-import productsData from "./productData.js";
-import quoteModel from "../models/quote.module.js";
-import quotesData from "./quotesData.js";
-import quoteProductModel from "../models/quote_product.module.js";
-import quotesProductsData from "./quotesProductsData.js";
+import customersData from "./custumer.data.js"
+import driversData from "./driver.data.js"
+import transfersData from "./trasfer.data.js"
+import vehiclesData from "./vehicle.data.js"
+import rechargesData from "./recharges.data.js"
+
 
 const seedData = async (dataArray, model) => {
     try {
@@ -29,10 +33,12 @@ const runSeeders = async () => {
     try {
         const modelsData = [
             { name: "users", model: UserModule, data: usersData },
-            { name: "custumers", model: customerModule, data: customersData },
-            { name: "products", model: productModule, data: productsData },
-            { name: "quotes", model: quoteModel, data: quotesData },
-            { name: "quotes_products", model: quoteProductModel, data: quotesProductsData },
+            //{ name: "custumers", model: CustomerModel, data: customersData },
+            //{ name: "drivers", model: DriverModel, data: driversData },
+            //{ name: "vehicle", model: VehicleModel, data: vehiclesData },
+            //{ name: "recharge", model: RechargeModel, data: rechargesData },
+            //{ name: "transfer", model: TransferModel, data: transfersData },
+            
             // Call other seeders to insert additional records
             // Example:
             // name: "name_model", model: ModuleModel, data: modelData;

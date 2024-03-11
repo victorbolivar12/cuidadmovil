@@ -1,26 +1,39 @@
 const usersData = [
     {
         id: 1,
-        username: "admin",
-        password: "admin123",
-        email: "admin@example.com",
+        username: "john_doe",
+        password: "john123",
+        email: "john.doe@example.com",
         rol: "Admin",
     },
     {
         id: 2,
-        username: "regularuser",
-        password: "regular123",
-        email: "regular@example.com",
-        rol: "Regular",
+        username: "jane_smith",
+        password: "jane456",
+        email: "jane.smith@example.com",
+        rol: "User",
     },
     {
         id: 3,
-        username: "therapist",
-        password: "therapist123",
-        email: "therapist@example.com",
-        rol: "Terapeuta",
+        username: "michael_johnson",
+        password: "michael789",
+        email: "michael.johnson@example.com",
+        rol: "User",
     },
-
+    {
+        id: 4,
+        username: "emily_brown",
+        password: "emily101",
+        email: "emily.brown@example.com",
+        rol: "User",
+    },
+    {
+        id: 5,
+        username: "david_wilson",
+        password: "david2022",
+        email: "david.wilson@example.com",
+        rol: "User",
+    },
 ];
 
-export default usersData
+export default usersData;

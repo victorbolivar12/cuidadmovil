@@ -1,0 +1,1 @@
+export const PUBLIC_KEY = "http://localhost:3000"
